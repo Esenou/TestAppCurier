@@ -1,0 +1,29 @@
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<head>
+    <title > Update user</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <h1>Update order information</h1>
+    <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+        <form th:method="UPDATE" th:action="@{update/{id}(id=${order.id})}" th:object="${order}">
+            <label for="user">Select User:</label>
+            <select  th:field="*{courier_id}" class="form-control" required="required" name="location" id="user">
+                <option th:each="i : ${users}" th:value="${i.id}"
+                        th:text="${i.username}" >
+                </option>
+            </select>
+            <br/>
+            <label for="product">Enter product</label>
+            <input type="text" th:field="*{product}" id="product" required="required" th:value="${product}" >
+            <br/>
+            <label for="target">Enter target location</label>
+            <input type="text" th:field="*{target_location}" id="target" required="required" th:value="${target_location}">
+            <br/>
+            <input type="submit" value="Create!"/>
+        </form>
+    </div>
+</div>
+</body>
